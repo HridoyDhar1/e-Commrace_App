@@ -22,9 +22,9 @@ class TCategoryTab extends StatelessWidget {
               children: [
                 // Brands //
                 const TBrandShowCase(images: [
-                  TImage.vertical,
-                  TImage.verticalOne,
-                  TImage.verticalTwo
+                  TImage.productImageOne,
+                  TImage.productImageTwo,
+                  TImage.productImage
                 ]),
 
                 const SizedBox(

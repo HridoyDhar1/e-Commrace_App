@@ -1,4 +1,5 @@
-import 'package:ecommeraceapp/features/shop/screens/home_page/home_page.dart';
+import 'package:ecommeraceapp/features/authentication/controllers/forget_password/forget_password_controller.dart';
+import 'package:ecommeraceapp/features/authentication/screens/login_page/login_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,8 +7,8 @@ import 'package:get/get.dart';
 import '../../../../../utils/constants/sized.dart';
 
 class ResetPassword extends StatelessWidget {
-  const ResetPassword({super.key});
-
+  const ResetPassword({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,13 +41,15 @@ class ResetPassword extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(const HomePage()),
+                    onPressed: () => Get.offAll(() => const LoginPage()),
                     child: const Text("Done")),
               ),
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                    onPressed: () {}, child: const Text("Resend Email")),
+                    onPressed: () => ForgetPasswordController.instance
+                        .resendPasswordResetEmail(email),
+                    child: const Text("Resend Email")),
               )
             ],
           ),

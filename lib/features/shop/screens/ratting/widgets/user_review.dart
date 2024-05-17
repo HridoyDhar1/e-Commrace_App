@@ -22,7 +22,7 @@ class UserReviewCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Image(
-                    width: 50, height: 50, image: AssetImage(TImage.google)),
+                    width: 50, height: 50, image: AssetImage(TImage.person)),
                 // const CircleAvatar(
                 //   backgroundColor: TColors.black,
                 // ),

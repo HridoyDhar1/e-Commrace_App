@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/sized.dart';
 import '../../../../../utils/device/device_utillity.dart';
-import '../../../controllers/splash_screen/splash_screen.dart';
+import '../../../controllers/splash_screen/onboarding.dart';
 
 class OnBoardingPageSkip extends StatelessWidget {
   const OnBoardingPageSkip({

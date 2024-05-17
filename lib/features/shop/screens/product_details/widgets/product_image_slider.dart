@@ -25,15 +25,15 @@ class TProductImageSlider extends StatelessWidget {
           children: [
             // Main large image //
             const SizedBox(
-                height: 400,
+                height: 420,
                 child: Padding(
-                  padding: EdgeInsets.all(TSized.productImageRadius),
+                  padding: EdgeInsets.all(0),
                   child: Center(
                       child: Image(image: AssetImage(TImage.verticalTwo))),
                 )),
             // Image Slider //
             Positioned(
-              top: 0,
+              top: 270,
               // bottom: 20,
               child: SizedBox(
                 height: 80,
@@ -46,11 +46,11 @@ class TProductImageSlider extends StatelessWidget {
                         backgroundColor: dark ? TColors.dark : TColors.white,
                         border: Border.all(color: TColors.primary),
                         padding: const EdgeInsets.all(TSized.sm),
-                        imageurl: TImage.verticalOne),
+                        imageurl: TImage.verticalTwo),
                     separatorBuilder: (_, __) => const SizedBox(
                           width: TSized.spaceBtwItems,
                         ),
-                    itemCount: 6),
+                    itemCount: 10),
               ),
             ),
 

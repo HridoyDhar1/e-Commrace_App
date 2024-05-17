@@ -1,6 +1,7 @@
+import 'package:ecommeraceapp/features/authentication/controllers/login/login_controller.dart';
 import 'package:ecommeraceapp/features/authentication/screens/forget_password/forget_password.dart';
 import 'package:ecommeraceapp/features/authentication/screens/singup_page/singup_page.dart';
-import 'package:ecommeraceapp/navigation_menu.dart';
+import 'package:ecommeraceapp/utils/validators/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -12,23 +13,41 @@ class LoginFrom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(loginController());
+
     return Form(
+      key: controller.loginFormkey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: TSized.spaceBtwSection),
         child: Column(
           children: [
             TextFormField(
+              validator: (value) =>
+                  TVaildator.validateEmptyText('Password', value),
+              controller: controller.email,
               decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email), labelText: "Email"),
             ),
             const SizedBox(
               height: 10,
             ),
-            TextFormField(
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
+            Obx(
+              () => TextFormField(
+                validator: (value) => TVaildator.validatePassword(value),
+                controller: controller.password,
+                obscureText: controller.hidepassword.value,
+                decoration: InputDecoration(
                   labelText: "Password",
-                  suffixIcon: Icon(Iconsax.eye_slash)),
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                    onPressed: () => controller.hidepassword.value =
+                        !controller.hidepassword.value,
+                    icon: Icon(controller.hidepassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye),
+                  ),
+                ),
+              ),
             ),
             // Remember and Forget Password //
             Row(
@@ -36,7 +55,11 @@ class LoginFrom extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (Value) {}),
+                    Obx(
+                      () => Checkbox(
+                          value: controller.remberMe.value,
+                          onChanged: (value) => controller.remberMe.value),
+                    ),
                     const Text("Remember Me"),
                   ],
                 ),
@@ -52,7 +75,7 @@ class LoginFrom extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.to(const NavigationMenu()),
+                  onPressed: () => controller.emailAndPasswordSingIn(),
                   child: const Text("Sing In")),
             ),
             const SizedBox(

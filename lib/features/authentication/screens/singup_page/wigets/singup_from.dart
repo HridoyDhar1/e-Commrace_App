@@ -1,11 +1,6 @@
-// ignore_for_file: unnecessary_import, deprecated_member_use
-
-import 'package:ecommeraceapp/features/authentication/screens/singup_page/verify_email.dart';
 import 'package:ecommeraceapp/features/authentication/screens/singup_page/wigets/singup_term_condition.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sized.dart';
@@ -67,8 +62,8 @@ class SingUpFormWiget extends StatelessWidget {
           const SizedBox(height: TSized.spaceBtwSection),
           // Email
           TextFormField(
-            // controller: controller.email,
-            // validator: (value) => TVaildator.vaildateEmail(value),
+            controller: controller.email,
+            validator: (value) => TVaildator.vaildateEmail(value),
             decoration: const InputDecoration(
               prefixIcon: Icon(Iconsax.user_edit),
               labelText: "Email",
@@ -105,7 +100,7 @@ class SingUpFormWiget extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => Get.to(const VerifyEmail()),
+              onPressed: () => controller.singUp(),
               child: Text(
                 "SignUp",
                 style: Theme.of(context).textTheme.bodyText1,

@@ -28,7 +28,7 @@ class ProductCartVertical extends StatelessWidget {
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
             boxShadow: [TShadowStyle.veriticalProductShadow],
-            borderRadius: BorderRadius.circular(TSized.productImageRadius),
+            borderRadius: BorderRadius.circular(10),
             color: dark ? TColors.darkerGrey : TColors.white),
         child: Column(
           children: [
@@ -40,7 +40,7 @@ class ProductCartVertical extends StatelessWidget {
               child: Stack(
                 children: [
                   const TRoundedImage(
-                    imageurl: TImage.verticalTwo,
+                    imageurl: TImage.verticalOne,
                     applyimageRadius: true,
                   ),
                   // Sale Tag //
@@ -107,8 +107,8 @@ class ProductCartVertical extends StatelessWidget {
                   decoration: const BoxDecoration(
                       color: TColors.dark,
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(TSized.cardRadiusMd),
-                          bottomRight: Radius.circular(50))),
+                          topLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(10))),
                   child: const SizedBox(
                     width: TSized.iconLg,
                     height: TSized.iconLg,

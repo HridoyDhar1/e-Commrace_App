@@ -1,22 +1,25 @@
+import 'package:ecommeraceapp/data/repositories/authentication/authentication_repositry.dart';
+import 'package:ecommeraceapp/features/authentication/controllers/verify_controller/verify_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../common/wigets/success_screen/success_screen.dart';
 import '../../../../utils/constants/images.dart';
 import '../../../../utils/constants/sized.dart';
 import '../../../../utils/helpers/helper_funcation.dart';
-import '../login_page/login_page.dart';
 
 class VerifyEmail extends StatelessWidget {
-  const VerifyEmail({super.key});
-
+  const VerifyEmail({super.key, this.email});
+  final String? email;
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(VerifyEmailController());
+
     return Scaffold(
       appBar: AppBar(actions: [
         IconButton(
-            onPressed: () => Get.offAll(() => const LoginPage()),
+            onPressed: () =>
+                Get.offAll(() => AuthenticationRepository.instance.logOut()),
             icon: const Icon(CupertinoIcons.clear))
       ]),
       body: SingleChildScrollView(
@@ -38,7 +41,7 @@ class VerifyEmail extends StatelessWidget {
                 height: TSized.spaceBtwItems,
               ),
               Text(
-                "support@gmail.com",
+                email ?? '',
                 style: Theme.of(context).textTheme.labelLarge,
               ),
               const SizedBox(
@@ -56,13 +59,7 @@ class VerifyEmail extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(() => SuccessScreen(
-                          image: TImage.TSuccessImage,
-                          title: "Your account successfully created!",
-                          subTitle:
-                              "Welcome to your ultimate shopping destination: Your account is Created,Unleash the joy of Seamless Online Shopping!s",
-                          onPressed: () => Get.to(() => const LoginPage()),
-                        )),
+                    onPressed: () => controller.checkEmailVerification(),
                     child: const Text("Continue")),
               ),
               const SizedBox(
@@ -71,7 +68,8 @@ class VerifyEmail extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                    onPressed: () {}, child: const Text("Resend Email")),
+                    onPressed: () => controller.sendEmailVerification(),
+                    child: const Text("Resend Email")),
               )
             ],
           ),

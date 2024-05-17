@@ -73,9 +73,9 @@ class HomePage extends StatelessWidget {
             children: [
               const TPromoSlider(
                 banners: [
+                  TImage.productImage,
                   TImage.verticalOne,
-                  TImage.verticalOne,
-                  TImage.verticalOne
+                  TImage.productImageOne
                 ],
               ),
               const SizedBox(

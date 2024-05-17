@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_import
 
+import 'package:ecommeraceapp/features/authentication/screens/login_page/login_page.dart';
 import 'package:ecommeraceapp/features/personalization/screens/address/user_address.dart';
 import 'package:ecommeraceapp/features/personalization/screens/profile/profile_page.dart';
 import 'package:ecommeraceapp/features/shop/screens/all_products/all_products.dart';
@@ -7,6 +8,7 @@ import 'package:ecommeraceapp/features/shop/screens/order/order_page.dart';
 import 'package:ecommeraceapp/features/shop/screens/sub_categori/sub_categories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/wigets/app_bar/app_bar.dart';
@@ -129,6 +131,21 @@ class SettingPage extends StatelessWidget {
                     title: "HD Image Quality",
                     subTitle: "Set image quality to be seen "),
               ],
+            ),
+          ),
+          GestureDetector(
+            onTap: () => Get.offAll(LoginPage()),
+            child: Container(
+              height: 20,
+              width: 300,
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
+              child: Center(
+                child: Text(
+                  "LogOut",
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              ),
             ),
           )
         ],

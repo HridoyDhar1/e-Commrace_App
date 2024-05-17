@@ -11,8 +11,14 @@ class NetWorkManager extends GetxController {
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
   final Rx<ConnectivityResult> _connnectionStatus = ConnectivityResult.none.obs;
 
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   _connectivitySubscription =
+  //       _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+  // }
 
-  Future<void> _updateConetionStatus(ConnectivityResult result) async {
+  Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     _connnectionStatus.value = result;
     if (_connnectionStatus.value == ConnectivityResult.none) {
       TLoaders.warningSnakeBar(title: "No Internet Connection");

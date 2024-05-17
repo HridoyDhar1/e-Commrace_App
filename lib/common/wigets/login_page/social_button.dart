@@ -1,4 +1,6 @@
+import 'package:ecommeraceapp/features/authentication/controllers/login/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../utils/constants/color.dart';
 import '../../../utils/constants/images.dart';
@@ -11,6 +13,7 @@ class SocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(loginController());
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -19,7 +22,7 @@ class SocialButton extends StatelessWidget {
               border: Border.all(color: TColors.grey),
               borderRadius: BorderRadius.circular(100)),
           child: IconButton(
-              onPressed: () {},
+              onPressed: () => controller.googleSingIn(),
               icon: const Image(
                   height: TSized.iconMd,
                   width: TSized.iconMd,

@@ -1,5 +1,3 @@
-// ignore_for_file: valid_regexps, body_might_complete_normally_nullable
-
 class TVaildator {
   // Empty text validation //
   static String? validateEmptyText(String? fieldName, String? value) {
@@ -13,8 +11,8 @@ class TVaildator {
       return "Email is required";
     }
     // Regular expression for email validation //
-    final emailRexExp = RegExp(r'^[\w-\.]+@([\w-\.]+[\w-]{2,5}$');
-    if (!emailRexExp.hasMatch(value)) {
+    final emailRegExp = RegExp(r'^[\w-\.]+@([\w-\.]+[\w-]{2,4})$');
+    if (!emailRegExp.hasMatch(value)) {
       return 'Invalid email address';
     }
     return null;

@@ -52,6 +52,29 @@ class SubCategories extends StatelessWidget {
                         }),
                   )
                 ],
+              ),
+              Column(
+                children: [
+                  TSectionHeading(
+                    title: "Sports Shirts",
+                    onPressed: () {},
+                  ),
+                  const SizedBox(
+                    height: TSized.spaceBtwItems / 2,
+                  ),
+                  SizedBox(
+                    height: 120,
+                    child: ListView.separated(
+                        itemCount: 4,
+                        separatorBuilder: (context, index) => const SizedBox(
+                              width: TSized.spaceBtwItems,
+                            ),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return const ProductCartHorizantal();
+                        }),
+                  )
+                ],
               )
             ],
           ),

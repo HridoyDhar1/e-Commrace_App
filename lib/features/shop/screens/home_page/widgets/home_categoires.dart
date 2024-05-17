@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_string_escapes
 
+import 'package:ecommeraceapp/utils/constants/images.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/wigets/common_widget_image/vertical_image.dart';
@@ -16,11 +17,10 @@ class THomeCategories extends StatelessWidget {
       height: 80,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 6,
+        itemCount: 4,
         itemBuilder: (_, index) {
           return TVerticalWidetText(
-            image:
-                "assets\images\360_F_121818673_6EID5iF76VCCc4aGOLJkd94Phnggre3o.jpg", // Provide image path
+            image: TImage.productImageOne, // Provide image path
             title: "Shoes Categories",
             textColor: TColors.white,
             onTap: () {}, // Provide onTap function

@@ -1,13 +1,17 @@
 // ignore_for_file: unused_import
 
+import 'package:ecommeraceapp/data/repositories/authentication/authentication_repositry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/repositories/user/user_repository.dart';
 import '../../../../utils/constants/images.dart';
 import '../../../../utils/pops/fullscreen_loader.dart';
 import '../../../../utils/pops/loader_animation.dart';
 import '../../../../utils/pops/network_manager.dart';
+import '../../../personalization/models/user_model.dart';
+import '../../screens/singup_page/verify_email.dart';
 
 class SingUpController extends GetxController {
   static SingUpController get instance => Get.find();
@@ -21,7 +25,7 @@ class SingUpController extends GetxController {
   final password = TextEditingController();
   final phoneNumber = TextEditingController();
   GlobalKey<FormState> singupFormkey = GlobalKey<FormState>();
-  void singUp() async {
+  Future<void> singUp() async {
     try {
       // Start loading //
 
@@ -44,29 +48,31 @@ class SingUpController extends GetxController {
       }
       // Register usern the firebase authentication and save user datea in the firebase //
 
-      // final UserCredential = await AuthenticationRepository.instance
-      //     .registerWithEmailAndPassword(
-      //         email.text.trim(), password.text.trim());
+      final UserCredential = await AuthenticationRepository.instance
+          .registerWithEmailAndPassword(
+              email.text.trim(), password.text.trim());
 
       // Save Authenticated user data in the firebase firestore //
-      // final newUser = UserModel(
-      //     id: UserCredential.user!.uid,
-      //     email: email.text.trim(),
-      //     firstName: firstName.text.trim(),
-      //     lastName: lastName.text.trim(),
-      //     profilePicture: '',
-      //     userName: userName.text.trim(),
-      //     phoneNumber: phoneNumber.text.trim());
-      // final userRepository = Get.put(UserRepository());
-      // await userRepository.saveUserRecord(newUser);
+      final newUser = UserModel(
+          id: UserCredential.user!.uid,
+          email: email.text.trim(),
+          firstName: firstName.text.trim(),
+          lastName: lastName.text.trim(),
+          profilePicture: '',
+          userName: userName.text.trim(),
+          phoneNumber: phoneNumber.text.trim());
+      final userRepository = Get.put(UserRepository());
+      await userRepository.saveUserRecord(newUser);
       // // Remove loader //
-      // TFullScreenLoader.stopLoading();
+      TFullScreenLoader.stopLoading();
       // // Show Success Message //
-      // TLoaders.sucessSnakeBar(
-      //     title: "Congratulations",
-      //     message: "Your account has been created! Verify email to continue");
-      // // Move to verify the email screeen //
-      // Get.to(() => const VerifyEmail());
+      TLoaders.sucessSnakeBar(
+          title: "Congratulations",
+          message: "Your account has been created! Verify email to continue");
+      // Move to verify the email screeen //
+      Get.to(() => VerifyEmail(
+            email: email.text.trim(),
+          ));
     } catch (e) {
       TLoaders.errorSnakeBar(title: 'Oh Snap!', message: e.toString());
     } finally {

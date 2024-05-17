@@ -19,10 +19,10 @@ class ProductCartHorizantal extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return Container(
-      width: 380,
+      width: 320,
       padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(TSized.productImageRadius),
+          borderRadius: BorderRadius.circular(10),
           color: dark ? TColors.darkerGrey : TColors.lightContainer),
       child: Row(
         children: [
@@ -37,7 +37,7 @@ class ProductCartHorizantal extends StatelessWidget {
                   height: 120,
                   width: 120,
                   child: TRoundedImage(
-                    imageurl: TImage.verticalTwo,
+                    imageurl: TImage.productImage,
                     applyimageRadius: true,
                   ),
                 ),
@@ -70,7 +70,7 @@ class ProductCartHorizantal extends StatelessWidget {
           ),
           // Details //
           SizedBox(
-            width: 180,
+            width: 150,
             child: Padding(
               padding: const EdgeInsets.only(top: TSized.sm, left: TSized.sm),
               child: Column(
@@ -98,9 +98,8 @@ class ProductCartHorizantal extends StatelessWidget {
                         decoration: const BoxDecoration(
                             color: TColors.dark,
                             borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(TSized.cardRadiusMd),
-                                bottomRight: Radius.circular(
-                                    TSized.productImageRadius))),
+                                topLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10))),
                         child: const SizedBox(
                           width: TSized.iconLg * 1.2,
                           height: TSized.iconLg * 1.2,

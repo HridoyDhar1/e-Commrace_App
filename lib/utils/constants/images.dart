@@ -4,6 +4,8 @@ class TImage {
   // App logos //
   static const String darkAppLogo = "assets/icons/Frame.png";
   static const String lightAppLogo = "assets/icons/Frame.png";
+  // Person //
+  static const String person = "assets/icons/man.png";
   // Social logos //
   static const String google = "assets/icons/search.png";
   static const String facebook = "assets/icons/communication.png";
@@ -41,4 +43,10 @@ class TImage {
   static const String visa = "assets/icons/visa.png";
   static const String paymentsuccessful =
       "assets/images/splash_screen/19466810_6134225.jpg";
+  // Product Images /
+  static const String productImage =
+      "assets/images/product/modern-blue-sports-shoe-design-close-up-fashionable-generated-by-ai.jpg";
+  static const String productImageOne =
+      "assets/images/product/elegant-smartphone-composition.jpg";
+  static const String productImageTwo = "assets/images/product/20jan3.jpg";
 }
