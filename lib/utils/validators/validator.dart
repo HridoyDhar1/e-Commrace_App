@@ -4,6 +4,7 @@ class TVaildator {
     if (value == null || value.isEmpty) {
       return '$fieldName is required.';
     }
+    return null;
   }
 
   static String? vaildateEmail(String? value) {

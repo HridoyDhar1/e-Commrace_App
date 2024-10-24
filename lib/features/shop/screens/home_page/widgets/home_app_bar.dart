@@ -1,3 +1,4 @@
+import 'package:ecommeraceapp/common/wigets/shimmer/shimmer_effect.dart';
 import 'package:ecommeraceapp/features/personalization/controllers/user_controller.dart';
 import 'package:ecommeraceapp/features/shop/screens/cart/cart_page.dart';
 import 'package:flutter/material.dart';
@@ -29,17 +30,17 @@ class THomeAppBar extends StatelessWidget {
           ),
           Obx(() {
             if (controller.profileLoading.value) {
-              return const Text("");
+              return const ShimmerEffect(width: 80, height: 15);
+            } else {
+              return Text(
+                controller.user.value.fullName,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .apply(color: TColors.white),
+              );
             }
-            return Text(
-              controller.user.value.fullName,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .apply(color: TColors.white),
-            );
           }),
-          const THomeAppBar()
         ],
       ),
       actions: [

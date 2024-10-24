@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_import
 
 import 'package:ecommeraceapp/features/authentication/screens/login_page/login_page.dart';
+import 'package:ecommeraceapp/features/personalization/controllers/user_controller.dart';
 import 'package:ecommeraceapp/features/personalization/screens/address/user_address.dart';
 import 'package:ecommeraceapp/features/personalization/screens/profile/profile_page.dart';
 import 'package:ecommeraceapp/features/shop/screens/all_products/all_products.dart';
@@ -161,18 +162,19 @@ class TUserProfieTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return ListTile(
       leading: const TCircularImage(
           image: TImage.TImages1, width: 50, height: 50, padding: 0),
       title: Text(
-        "Hare Krishna",
+        controller.user.value.fullName,
         style: Theme.of(context)
             .textTheme
             .headlineSmall!
             .apply(color: TColors.white),
       ),
       subtitle: Text(
-        "Support@krishna.com",
+        controller.user.value.email,
         style:
             Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.white),
       ),

@@ -59,7 +59,7 @@ class TVerticalWidetText extends StatelessWidget {
                 title,
                 style: Theme.of(context)
                     .textTheme
-                    .headline6!
+                    .titleLarge!
                     .apply(color: textColor),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,

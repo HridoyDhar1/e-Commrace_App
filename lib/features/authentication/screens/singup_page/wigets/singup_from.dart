@@ -103,7 +103,7 @@ class SingUpFormWiget extends StatelessWidget {
               onPressed: () => controller.singUp(),
               child: Text(
                 "SignUp",
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
           ),
